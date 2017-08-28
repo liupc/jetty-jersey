@@ -40,10 +40,10 @@ public class JdkPlainHttpServer {
 
     ResourceHandler resourceHandler = new ResourceHandler();
     String userDir = System.getProperty("user.dir");
-    resourceHandler.setBaseResource(Resource.newResource(userDir + "/generated/swagger-ui"));
+    resourceHandler.setBaseResource(Resource.newResource(userDir + "/static"));
 //    resourceHandler.setResourceBase(userDir + "/generated/swagger-ui");
     resourceHandler.setDirectoriesListed(true);
-    ContextHandler resourceContext = new ContextHandler("/swagger");
+    ContextHandler resourceContext = new ContextHandler("/static");
     resourceContext.setHandler(resourceHandler);
     handlers.addHandler(resourceContext);
 
