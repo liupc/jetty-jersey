@@ -49,9 +49,6 @@ public class JdkPlainHttpServer {
 
     server.setHandler(handlers);
 
-    // configure logging
-    BasicConfigurator.configure();
-
     try {
       server.start();
       server.join();
