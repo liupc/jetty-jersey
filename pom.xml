@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.lpc.web</groupId>
+  <artifactId>jetty-jersey</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <description>A web server example built with jetty and jersey</description>
+  <developers>
+    <developer>
+      <organization>XiaoMi</organization>
+      <email>liupengcheng@xiaomi.com</email>
+    </developer>
+  </developers>
+
+  <dependencies>
+
+  <dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-server</artifactId>
+    <version>9.2.10.v20150310</version>
+  </dependency>
+  <dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-servlet</artifactId>
+    <version>9.2.10.v20150310</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish.jersey.core</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>2.22.2</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish.jersey.containers</groupId>
+    <artifactId>jersey-container-servlet-core</artifactId>
+    <version>2.22.2</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish.jersey.media</groupId>
+    <artifactId>jersey-media-json-jackson</artifactId>
+    <version>2.19</version>
+  </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.8.2</version>
+    </dependency>
+  <!--<dependency>-->
+    <!--<groupId>org.glassfish.jersey.media</groupId>-->
+    <!--<artifactId>jersey-media-moxy</artifactId>-->
+    <!--<version>2.19</version>-->
+  <!--</dependency>-->
+  <dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.8.2</version>
+  </dependency>
+  <!--<dependency>-->
+  <!--<groupId>javax.xml.bind</groupId>-->
+  <!--<artifactId>jaxb-api</artifactId>-->
+  <!--<version>2.2.7</version>-->
+  <!--</dependency>-->
+  <dependency>
+    <groupId>io.swagger</groupId>
+    <artifactId>swagger-annotations</artifactId>
+    <version>1.5.4</version>
+  </dependency>
+  <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.16</version>
+  </dependency>
+  <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.16</version>
+  </dependency>
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.16.6</version>
+  </dependency>
+
+  <!-- junit 4 deps -->
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+  </dependency>
+</dependencies>
+
+<build>
+<plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.6.2</version>
+    <configuration>
+      <source>1.8</source>
+      <target>1.8</target>
+    </configuration>
+  </plugin>
+  <plugin>
+    <groupId>com.github.kongchen</groupId>
+    <artifactId>swagger-maven-plugin</artifactId>
+    <version>3.1.3</version>
+    <configuration>
+      <apiSources>
+        <apiSource>
+          <springmvc>false</springmvc>
+          <locations>
+            com.lpc.web.server
+          </locations>
+          <schemes>http,https</schemes>
+          <host>localhost:8080</host>
+          <basePath>/api</basePath>
+          <outputPath>${basedir}/generated/document.html</outputPath>
+          <swaggerDirectory>${basedir}/generated/swagger-ui</swaggerDirectory>
+          <outputFormats>json,yaml</outputFormats>
+          <info>
+            <title>Jetty jersey</title>
+            <version>v1</version>
+            <!-- use markdown here because I'm using markdown for output,
+            if you need to use html or other markup language, you need to use your target language,
+             and note escape your description for xml -->
+            <description>
+              This is a sample.
+            </description>
+            <termsOfService>
+              http://www.github.com/liupc/jetty-jersey
+            </termsOfService>
+            <contact>
+              <email>liupengcheng@xiaomi.com</email>
+              <name>pengcheng Liu</name>
+            </contact>
+            <license>
+              <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+              <name>Apache 2.0</name>
+            </license>
+          </info>
+          <!--<outputPath>${basedir}/generated/swagger/</outputPath>-->
+        </apiSource>
+      </apiSources>
+    </configuration>
+    <executions>
+      <execution>
+        <phase>compile</phase>
+        <goals>
+          <goal>generate</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+</build>
+
+
+    </project>
