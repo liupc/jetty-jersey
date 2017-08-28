@@ -3,9 +3,9 @@ A Jetty jersey made restful web services
 
 this restful web services is built with jetty & jersey, also use swagger-ui as the integregation test tools
 
-jetty: As the web server
-jersey: To impl the restful api
-swagger: As the integregation test tools
+* jetty: As the web server
+* jersey: To impl the restful api
+* swagger: As the integregation test tools
 
 
 ## Usage
