@@ -116,8 +116,9 @@
           <schemes>http,https</schemes>
           <host>localhost:8080</host>
           <basePath>/api</basePath>
-          <outputPath>${basedir}/generated/document.html</outputPath>
-          <swaggerDirectory>${basedir}/generated/swagger-ui</swaggerDirectory>
+          <templatePath>${basedir}/static/templates/strapdown.html.hbs</templatePath>
+          <outputPath>${basedir}/static/document.html</outputPath>
+          <swaggerDirectory>${basedir}/static/swagger-ui</swaggerDirectory>
           <outputFormats>json,yaml</outputFormats>
           <info>
             <title>Jetty jersey</title>
@@ -140,7 +141,6 @@
               <name>Apache 2.0</name>
             </license>
           </info>
-          <!--<outputPath>${basedir}/generated/swagger/</outputPath>-->
         </apiSource>
       </apiSources>
     </configuration>
