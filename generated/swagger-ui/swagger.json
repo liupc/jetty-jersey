@@ -1,0 +1,105 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample.",
+    "version" : "v1",
+    "title" : "Jetty jersey",
+    "termsOfService" : "http://www.github.com/liupc/jetty-jersey",
+    "contact" : {
+      "name" : "pengcheng Liu",
+      "email" : "liupengcheng@xiaomi.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/api",
+  "tags" : [ {
+    "name" : "customers",
+    "description" : "Restful Api for customers"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/customers" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Get all customers",
+        "description" : "Get all customers matching the given search string.",
+        "operationId" : "getCustomers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "search",
+          "in" : "query",
+          "description" : "The search string is used to find thecustomers. Not case sensetive",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "Limits of the result size",
+          "required" : false,
+          "type" : "integer",
+          "default" : 10,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Customer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers/create" : {
+      "post" : {
+        "tags" : [ "customers" ],
+        "summary" : "Create a customer",
+        "description" : "Create a customer with the specified info",
+        "operationId" : "createCustomer",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "customer pojo",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Customer"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Customer" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "sex" : {
+          "type" : "string",
+          "enum" : [ "MAN", "WOMAN" ]
+        }
+      }
+    }
+  }
+}
